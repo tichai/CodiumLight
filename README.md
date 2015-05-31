@@ -6,9 +6,9 @@ To download, visit the [releases](https://github.com/tichai/CodiumLight) page.
 
 ## Screenshot
 
-![Screenshot1](https://github.com/tichai/CodiumLight/screenshot1.png)
+![Screenshot1](https://github.com/tichai/CodiumLight/blob/master/screenshot1.png)
 
-![Screenshot2](https://github.com/tichai/CodiumLight/screenshot2.png)
+![Screenshot2](https://github.com/tichai/CodiumLight/blob/master/screenshot2.png)
 
 
 ## Copyright & License
