@@ -4,6 +4,12 @@ Codium Light is a Ghost theme Simple, minimalist and very clean. This theme is p
 
 To download, visit the [releases](https://github.com/tichai/CodiumLight) page.
 
+## Screenshot
+
+[Screenshot1](https://github.com/tichai/CodiumLight/screenshot1.png)
+[Screenshot2](https://github.com/tichai/CodiumLight/screenshot2.png)
+
+
 ## Copyright & License
 
 Copyright (C) 2015  Linghein Ho & Henri Labarre
