@@ -1,0 +1,41 @@
+{{! This is the post loop - each post will be output using this markup }}
+{{#foreach posts}}
+
+<div id="post-{{post_id}}" class="{{post_class}} dp100 infocontainer justif">
+    <h2 class="entry-title"><a href="{{url}}" title="{{title}}" rel="bookmark">{{title}}</a></h2>
+    <div class="entry-date"><abbr class="{{date format='YYYY-MM-DD'}}">{{date format="DD MMMM YYYY"}}</abbr></div>
+    <div class="hr"></div>
+    <?php if ( has_post_thumbnail() ) {
+        ?> 
+    <div class="entry-content">
+        <p class="dropcap home">{{excerpt words="150"}}
+        &nbsp;<a href="{{url}}" ><span class="meta-nav">Read More</span></a>
+        {{#if image}}
+        <div class="center thumbnail">
+            <a href="{{url}}">
+                <img src="{{image}}" width="600" alt="{{title}}">
+            </a>
+        </div>
+        {{/if}}
+        <!-- End Thumb Container -->    
+    </div>
+    <div class="clear"></div>
+    <div class="entry-content">
+        <div class="entry-meta">
+            <span class="meta-prep meta-prep-author">Posted on</span> <span class="entry-date">{{date published_at format="MMMM DD, YYYY"}}</span> <span class="meta-sep">by</span> {{#author}}<span class="author vcard"><a class="url fn n" href="{{url}}" title="View all posts by {{name}}" rel="author">{{name}}</a></span>{{/author}}.                            
+            {{#if tags}}This entry was posted in {{#foreach tags}}{{#if @first}}<a href="{{url}}" rel="category">{{name}}</a>{{else}}, <a href="{{url}}" rel="category">{{name}}</a>{{/if}} {{#if @last}}and <a href="{{url}}" rel="category">{{name}}</a>{{/if}}{{/foreach}}{{/if}}.   
+        </div>
+    </div>
+</div>
+<!-- End post -->
+<div class="linebreak clear"></div>
+{{/foreach}}
+
+{{! Previous/next page links - only displayed on page 2+ }}
+<div class="center">
+    <div class="entry-content">
+        {{pagination}}
+    </div>
+</div>
+
+<div class="clear"></div>

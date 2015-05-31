@@ -1,0 +1,39 @@
+{{!< default}}
+{{! The tag above means - insert everything in this file into the {body} of the default.hbs template }}
+
+{{! If we have a tag cover, display that - else blog cover - else nothing }}
+<div id="containerlarge">
+    <div id="content" class="sixteen columns">
+        <div class="item">
+            <div id="top" class="dp100 breadcrumbs-one entrycontent">
+                <ul id="breadcrumbs-one">
+                    <li>
+                        <div style="display:inline" itemscope itemtype="http://data-vocabulary.org/Breadcrumb">
+                            <a href="{{@blog.url}}" itemprop="url">
+                                <div class="homebutton"><span itemprop="title">Home</span></div>
+                            </a>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="dp100 infocontainer justif">
+            <h1 class="page-title">Tag: {{tag.name}}</h1>
+            <div class="hr"></div>
+                <div class="entry-content">
+                    {{#if tag.description}}
+                        {{tag.description}}
+                    {{else}}
+                        {{pagination.total}}-post collection
+                    {{/if}}
+                </div>
+        </div>
+        <?php if (have_posts()) : ?>  
+        <?php while (have_posts()) : the_post(); ?>
+            
+<main class="content" role="main">
+
+    {{! The tag below includes the post loop - partials/loop.hbs }}
+    {{> "loop"}}
+
+</main>

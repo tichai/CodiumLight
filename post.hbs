@@ -1,0 +1,77 @@
+{{!< default}}
+
+{{! The comment above "< default" means - insert everything in this file into
+    the {body} of the default.hbs template, which contains our header/footer. }}
+
+{{! Everything inside the #post tags pulls data from the post }}
+{{#post}}
+
+<div id="containerlarge">
+    <div id="content" class="sixteen columns">
+        <div id="{{post_id}}" class="{{post_class}}">
+            <div class="dp100">
+                <div class="item">
+                    <div id="top" class="dp100 breadcrumbs-one entrycontent">
+                        <ul id="breadcrumbs-one">
+                            <li>
+                                <div style="display:inline" itemscope itemtype="http://data-vocabulary.org/Breadcrumb">
+                                    <a href="{{@blog.url}}" itemprop="url">
+                                        <div class="homebutton"><span itemprop="title">Home</span></div>
+                                    </a>
+                                </div>
+                            </li>
+                            {{#if tags}}
+                            <li class="divider">/</li>
+                            <li>
+                                <div style="display:inline" itemscope itemtype="http://data-vocabulary.org/Breadcrumb">
+                                    {{#foreach tags}}
+                                        {{#if @first}}<a href="{{url}}" itemprop="url"><span itemprop="title">{{name}}</span></a>{{/if}}
+                                    {{/foreach}}
+                                </div>
+                            </li>
+                            {{/if}}
+                        </ul>
+                    </div>
+                </div>
+                <div class="clear"></div>
+                <div class="entry-content">
+                    <div class="dp100 infocontainer justif">
+                        <h1 class="entry-title">{{title}}</h1>
+                        <div class="hr"></div>
+                        {{content}}
+                        <div class="clear"></div>
+                        <div class="entry-meta">
+                            <span class="meta-prep meta-prep-author">Posted on</span> <span class="entry-date">{{date published_at format="MMMM DD, YYYY"}}</span> <span class="meta-sep">by</span> {{#author}}<span class="author vcard"><a class="url fn n" href="{{url}}" title="View all posts by {{name}}" rel="author">{{name}}</a></span>{{/author}}.                            
+                            {{#if tags}}This entry was posted in {{#foreach tags}}{{#if @first}}<a href="{{url}}" rel="category">{{name}}</a>{{else}}, <a href="{{url}}" rel="category">{{name}}</a>{{/if}} {{#if @last}}and <a href="{{url}}" rel="category">{{name}}</a>{{/if}}{{/foreach}}{{/if}}.   
+                        </div>
+                        <div class="clear"></div>
+                        <div class="hr"></div>
+                        <div id="nav-below" class="navigation">
+                            {{#prev_post}}<div class="nav-previous"><a href="{{url}}" rel="prev"><span class="meta-nav-left"> {{title}}</span></span></div>{{/prev_post}}
+                            {{#next_post}}<div class="nav-next"><a href="{{url}}" rel="next">{{title}} <span class="meta-nav-right"></span></a></div>{{/next_post}}
+                        </div>
+                        <div class="clear"></div>
+                        <div class="hr"></div>
+                            <section class="share">
+                                <h4>Share this post</h4>
+                                <a class="icon-twitter" href="https://twitter.com/share?text={{encode title}}&amp;url={{url absolute="true"}}"
+                    onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;">
+                                    <span class="hidden">Twitter</span>
+                                </a>&nbsp; | &nbsp;
+                                <a class="icon-facebook" href="https://www.facebook.com/sharer/sharer.php?u={{url absolute="true"}}"
+                    onclick="window.open(this.href, 'facebook-share','width=580,height=296');return false;">
+                                    <span class="hidden">Facebook</span>
+                                </a>&nbsp; | &nbsp;
+                                <a class="icon-google-plus" href="https://plus.google.com/share?url={{url absolute="true"}}"
+                   onclick="window.open(this.href, 'google-plus-share', 'width=490,height=530');return false;">
+                                    <span class="hidden">Google+</span>
+                                </a>
+                            </section>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{{/post}}

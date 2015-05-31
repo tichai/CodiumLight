@@ -1,0 +1,36 @@
+{{!< default}}
+
+{{! This is a page template. A page outputs content just like any other post, and has all the same
+    attributes by default, but you can also customise it to behave differently if you prefer. }}
+
+{{! Everything inside the #post tags pulls data from the page }}
+{{#post}}
+<div id="containerlarge">
+    <div id="content" class="sixteen columns">
+        <div class="item">
+            <div id="top" class="dp100 breadcrumbs-one entrycontent">
+                <ul id="breadcrumbs-one">
+                    <li>
+                        <div style="display:inline" itemscope itemtype="http://data-vocabulary.org/Breadcrumb">
+                            <a href="{{@blog.url}}" itemprop="url">
+                                <div class="homebutton"><span itemprop="title">Home</span></div>
+                            </a>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="dp100 entry-content infocontainer justif">
+            <div id="{{post_id}}" class="{{post_class}}">
+                <h1 class="entry-title">{{title}}</h1>
+                <div class="hr"></div>
+                {{content}}
+                <div class="clear"></div>
+            </div>
+            <!-- .post -->
+        </div>
+    </div>
+    <!-- #content -->
+</div>
+<!-- #container -->
+{{/post}}

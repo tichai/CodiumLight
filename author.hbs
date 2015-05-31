@@ -1,0 +1,56 @@
+{{!< default}}
+{{! The tag above means - insert everything in this file into the {body} of the default.hbs template }}
+
+{{! The big featured header }}
+
+{{! Everything inside the #author tags pulls data from the author }}
+<div id="containerlarge">
+    <div id="content" class="sixteen columns">
+        {{#author}}
+        <div class="item">
+            <div id="top" class="dp100 breadcrumbs-one entrycontent">
+                <ul id="breadcrumbs-one">
+                    <li>
+                        <div style="display:inline" itemscope itemtype="http://data-vocabulary.org/Breadcrumb">
+                            <a href="{{@blog.url}}" itemprop="url">
+                                <div class="homebutton"><span itemprop="title">Home</span></div>
+                            </a>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="dp100 infocontainer justif">
+            <h1 class="page-title author"><a class='url fn n' href='{{url}}' title='$authordata->display_name' rel='me'>Author Archives: <span class="vcard">{{name}}</span></a></h1>
+            <div class="hr"></div>
+            <?php if ( get_the_author_meta( 'description' ) ) : ?>
+            <div id="entry-author-info">
+                <div id="author-avatar" style="float: left;">
+                    <img alt="" src="{{image}}" class="avatar avatar-60 photo" height="150" width="150">
+                </div>
+                <!-- #author-avatar -->
+                <div id="author-description" class="entry-content" style="float: left; margin: 15px 25px;">
+                    <h3>{{name}}</h3>
+                    <div class="clear"></div>
+                    <p><i>{{location}}</i><br /><a href="{{website}}">{{website}}</a></p>
+                    <p>{{bio}}</p>
+                </div>
+                <!-- #author-description    -->
+            </div>
+            <!-- #entry-author-info -->
+            <div class="clear"></div>
+        </div>
+        {{/author}}
+
+        {{! The main content area on the homepage }}
+        <main class="content" role="main">
+
+            {{! The tag below includes the post loop - partials/loop.hbs }}
+            {{> "loop"}}
+
+        </main>
+
+    </div>
+    <!-- #content -->
+</div>
+<!-- #container -->

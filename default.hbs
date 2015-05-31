@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+    {{! Document Settings }}
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+
+    {{! Page Meta }}
+    <title>{{meta_title}}</title>
+
+
+    {{! Styles'n'Scripts }}
+    <link rel="stylesheet" type="text/css" href="{{asset "css/style.css"}}" />
+
+    {{! Ghost outputs important style and meta data with this tag }}
+    {{ghost_head}}
+</head>
+<body class="{{body_class}} nav-closed">
+    <div id="wrapperpub" >
+        <div id="header" class="container">
+            <div id="mainlogo" class="dp70">
+                <div id="blog-title" class="blogtitle"><a href="{{@blog.url}}" title="{{@blog.title}}" >{{#if @blog.logo}}<img src="{{@blog.logo}}" title="{{@blog.title}}">{{else}}{{@blog.title}}{{/if}}</a></div>
+                <div class="description">{{@blog.description}} </div>
+            </div>
+            <div class="clear"></div>
+            <script type="text/javascript">
+                function showMenu() {
+                    var elements = primarynavigation.getAttribute("class");
+                    if (elements === "site-navigation primarynavigation") {
+                        primarynavigation.setAttribute("class", "site-navigation primarynavigation toggled-on");
+                    }
+                    else {
+                        primarynavigation.setAttribute("class", "site-navigation primarynavigation");
+                    }
+                }
+            </script>
+            <nav id="primarynavigation" class="site-navigation primarynavigation" role="navigation">
+                <button class="menu-toggle" onclick="showMenu()"></button>
+                 {{navigation}}
+            </nav>
+        </div>
+        <!--  #header -->   
+    </div>
+    <!--  #wrapperpub -->   
+    <div class="clear"></div>
+    <div id="wrapper" class="container">
+    <div class="clear"></div>
+
+        {{! Everything else gets inserted here }}
+        {{{body}}}
+
+
+        <div class="credits container_15 entry-content-footer"><a href="{{@blog.ulr}}">{{@blog.title}}</a> &copy; {{date format="YYYY"}} <br/>Proudly published with <a href="https://ghost.org" title="Ghost">Ghost</a></div>
+
+
+    </div>
+
+    {{! Ghost outputs important scripts and data with this tag }}
+    {{ghost_foot}}
+
+</body>
+</html>
